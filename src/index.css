@@ -3,3 +3,25 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --background: #f0f9ff;
+  --background-card: #ffffff;
+  --background-green: #f0fdf4;
+  --background-red: #fef2f2;
+  --background-yellow-hover: #fefce8;
+  --border-yellow-hover: #facc15;
+  --border: #e5e7eb; /*0 solid*/
+  --color-text-primary: #0e0e0e;
+  --color-text-secondary: #555f6c;
+  --color-text-red: #b91c1c;
+  --color-text-green: #1f8646;
+  --color-text-card-hover: #ce9317;
+  --color-text-title-card-hover: #a26307;
+}
+
+body {
+  background-color: var(--background);
+  line-height: 1.5;
+  min-height: 100vh;
+}
