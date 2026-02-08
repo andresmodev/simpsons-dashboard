@@ -1,0 +1,26 @@
+.card {
+  width: 280px;
+  height: 326px;
+  border: 1px solid #555;
+  margin-bottom: 10px;
+  padding: 1rem;
+}
+
+.headerCard {
+  width: 180px;
+  padding: 8px;
+}
+
+.imgProfileCard {
+  width: 128px;
+  height: 128px;
+}
+
+.occupationCard {
+  height: 40px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* Número de líneas a mostrar */
+  line-clamp: 2; /* futuro estándar */
+  overflow: hidden;
+}
