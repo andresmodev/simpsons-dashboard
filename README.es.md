@@ -6,21 +6,19 @@ Aplicación frontend construida con React enfocada en un manejo de estado escala
 
 Mostrar una lista de personajes con soporte para estados de carga y error, persistencia, paginación y filtrado, siguiendo prácticas de arquitectura frontend del mundo real.
 
-Objetivo de la versión 🐱‍💻
-La aplicación obtiene datos de la API de personajes y renderiza una lista básica de tarjetas.
+## Objetivo de la versión 🐱‍💻
+
+Mejorar la legibilidad de las tarjetas truncando el texto de ocupación largo y seleccionando frases más cortas para una mejor visualización
 
 ## 📓 Tareas pendientes
 
-- [x] Estructura de carpetas, archivos y delegación de responsabilidades desde el inicio
-- [x] Fetch correcto
-- [x] Renderizado de una lista
-- [x] Una tarjeta simple
-- [x] Uso adecuado de keys
-- [x] Nombres claros
+- [x] Truncar texto largo en `occupation`
+- [x] Escoger frases cortas para una mejor visualización
 
 ## 🧩 Funcionalidades
 
 - [x] Obtener y renderizar personajes
+- [x] Mejorar legibilidad en la tarjeta
 - [] Manejo de carga y error
 - [] Diseño responsivo, componentes de UI
 - [] Estado persistente (localStorage)
@@ -34,7 +32,8 @@ La aplicación obtiene datos de la API de personajes y renderiza una lista bási
 - **Hooks**: estado y efectos secundarios
 - **api**: comunicación con la API
 - **constants**: configuración y endpoints
-- 📝 Las imágenes se sirven desde un CDN. La API devuelve únicamente un fragmento portrait_path, el cual debe concatenarse con la URL base del CDN (https://cdn.thesimpsonsapi.com/500).
+- 📝Para truncar el texto en múltiples líneas se requiere `-webkit-line-clamp` que es un hack dependiente de `-webkit-box`.
+- 📝Seguí mi patrón de arquitectura separando responsabilidades, cree una nueva carpeta `utils/` con su archivo `services.js` el cual dentro llama una constante que su rol es asignar un limite de caracteres, también exporta una función `chooseCharacterPhrase` que recibe un array de strings y dentro devuelve la frase más corta dentro del límite o un fallback.
 
 ## 🚀 Tecnologías
 
@@ -45,7 +44,7 @@ La aplicación obtiene datos de la API de personajes y renderiza una lista bási
 
 ## 📦 Versión
 
-v0.1.0
+v0.2.0
 
 ## 📄 Licencia
 

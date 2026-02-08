@@ -18,23 +18,19 @@ Display a list of characters with support for loading and error states, persiste
 
 ### Version Objective 🐱‍💻
 
-The application retrieves data from the character API and renders a basic list of cards.
+Improve card readability by truncating long occupation text and selecting shorter phrases for better display.
 
 ### 📓 TO-DO
 
-- [x] Folder structure, files, and delegation of responsabilities from the beninning
-- [x] Correct fetching
-- [x] Rendering of a list
-- [x] A simple card
-- [x] Well-used keys
-- [x] Clear names
+- [x] Truncate long occupation text
+- [x] Select short phrases for better display
 
 ---
 
 ## 🧩 Features
 
 - [x] Fetch and render character
-- [] UI poliuh
+- [x] Improve readability on the card
 - [] Loading and error handling
 - [] Responsive design, UI components
 - [] Persistent state (localStorage)
@@ -50,7 +46,8 @@ The application retrieves data from the character API and renders a basic list o
 - **Hooks**: state and side effects
 - **api**: API communication
 - **constants**: configuration and endpoints
-- 📝Images are served from a CDN. The API returns only a portrait_path fragment, which must be concatenated with the CDN base URL (https://cdn.thesimpsonsapi.com/500).
+- 📝To truncate text across multiple lines requires `-webkit-line-clamp`, which is a hack dependent on `-webkit-box`.
+- 📝I followed my architectural pattern of separating responsibilities, creating a new `utils/` folder with its `services.js` file, which calls a constant whose role is to assign a character limit. It also exports a `chooseCharacterPhrase` function that receives an array of strings and returns the shortest phrase within the limit or a fallback.
 
 ---
 
@@ -65,7 +62,7 @@ The application retrieves data from the character API and renders a basic list o
 
 ## 📦 Version
 
-v0.1.0
+v0.2.0
 
 ---
 
