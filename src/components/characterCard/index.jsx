@@ -7,7 +7,6 @@ export default function CharacterCard({ character }) {
 
   // obtener frase
   const phrase = chooseCharacterPhrase(phrases);
-  console.log(phrase);
 
   return (
     <div className={styles.card}>

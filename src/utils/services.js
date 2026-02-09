@@ -8,3 +8,6 @@ export const chooseCharacterPhrase = (phrases) => {
 
   return phrase ? phrase : "Character without phrase";
 };
+
+// recargar pantalla
+export const reload = () => window.location.reload();
