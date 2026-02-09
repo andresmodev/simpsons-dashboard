@@ -1,0 +1,9 @@
+.contentMessage {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.errorMessage {
+  color: #ff3333;
+}

@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import { fetchCharacters } from "../api/apiService.js";
 
 export const useCharacter = () => {
+  // estados
   const [characters, setCharacters] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -13,11 +16,15 @@ export const useCharacter = () => {
         const data = await res.json();
         setCharacters(data.results);
       } catch (err) {
-        console.error(err.message);
+        setError(err.message);
+      } finally {
+        console.log("Finally se ejecutó");
+        setIsLoading(false);
       }
     };
+
     fetchApi();
   }, []);
 
-  return { characters };
+  return { characters, isLoading, error };
 };

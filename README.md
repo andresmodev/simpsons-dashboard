@@ -16,14 +16,16 @@ Display a list of characters with support for loading and error states, persiste
 
 ---
 
-### Version Objective 🐱‍💻
+### 🐱‍💻 Version Objective
 
-Improve card readability by truncating long occupation text and selecting shorter phrases for better display.
+Handle loading, error, and empty states by implementing reusable UI components (spinner, error message, empty message) to improve user feedback.
 
 ### 📓 TO-DO
 
-- [x] Truncate long occupation text
-- [x] Select short phrases for better display
+- [x] Create a loading component with spinner and message
+- [x] Create an error component with descriptive message
+- [x] Create an empty state component for no data
+- [x] Integrate state handling into character list rendering
 
 ---
 
@@ -31,7 +33,7 @@ Improve card readability by truncating long occupation text and selecting shorte
 
 - [x] Fetch and render character
 - [x] Improve readability on the card
-- [] Loading and error handling
+- [x] Loading and error handling
 - [] Responsive design, UI components
 - [] Persistent state (localStorage)
 - [] Pagination
@@ -46,8 +48,15 @@ Improve card readability by truncating long occupation text and selecting shorte
 - **Hooks**: state and side effects
 - **api**: API communication
 - **constants**: configuration and endpoints
-- 📝To truncate text across multiple lines requires `-webkit-line-clamp`, which is a hack dependent on `-webkit-box`.
-- 📝I followed my architectural pattern of separating responsibilities, creating a new `utils/` folder with its `services.js` file, which calls a constant whose role is to assign a character limit. It also exports a `chooseCharacterPhrase` function that receives an array of strings and returns the shortest phrase within the limit or a fallback.
+
+The application manages three main states: loading, error, and empty. These states are controlled in the `useCharacter` hook and reflected in the UI through conditional rendering in `App`.
+
+- **Loading**: a spinner with a message is displayed while data is being fetched.
+- **Error**: an error message with a reload option is shown if the API request fails.
+- **Empty**: a message is displayed when no data is available.
+- **Data**: the character list is rendered when the API responds successfully.
+
+Each state has its own dedicated component (`LoadingMessage`, `ErrorMessage`, `ShowEmptyState`) to keep the UI clear and reusable. The rendering flow follows a strict priority: **loading → error → empty → data**.
 
 ---
 
@@ -62,7 +71,7 @@ Improve card readability by truncating long occupation text and selecting shorte
 
 ## 📦 Version
 
-v0.2.0
+v0.3.0
 
 ---
 

@@ -6,20 +6,22 @@ Aplicación frontend construida con React enfocada en un manejo de estado escala
 
 Mostrar una lista de personajes con soporte para estados de carga y error, persistencia, paginación y filtrado, siguiendo prácticas de arquitectura frontend del mundo real.
 
-## Objetivo de la versión 🐱‍💻
+## 🐱‍💻 Objetivo de la versión
 
-Mejorar la legibilidad de las tarjetas truncando el texto de ocupación largo y seleccionando frases más cortas para una mejor visualización
+Manejar los estados de carga, error y vacío implementando componentes de IU reutilizables (spinner, mensaje de error, mensaje vacío) para mejorar la respuesta del usuario.
 
 ## 📓 Tareas pendientes
 
-- [x] Truncar texto largo en `occupation`
-- [x] Escoger frases cortas para una mejor visualización
+- [x] Crear un componente de carga con un spinner y un mensaje
+- [x] Crear un componente de error con un mensaje descriptivo
+- [x] Crear un componente de estado vacío si no hay datos
+- [x] Integrar el manejo del estado en la representación de la lista de caracteres
 
 ## 🧩 Funcionalidades
 
 - [x] Obtener y renderizar personajes
 - [x] Mejorar legibilidad en la tarjeta
-- [] Manejo de carga y error
+- [x] Manejo de carga y error
 - [] Diseño responsivo, componentes de UI
 - [] Estado persistente (localStorage)
 - [] Paginación
@@ -32,8 +34,17 @@ Mejorar la legibilidad de las tarjetas truncando el texto de ocupación largo y 
 - **Hooks**: estado y efectos secundarios
 - **api**: comunicación con la API
 - **constants**: configuración y endpoints
-- 📝Para truncar el texto en múltiples líneas se requiere `-webkit-line-clamp` que es un hack dependiente de `-webkit-box`.
-- 📝Seguí mi patrón de arquitectura separando responsabilidades, cree una nueva carpeta `utils/` con su archivo `services.js` el cual dentro llama una constante que su rol es asignar un limite de caracteres, también exporta una función `chooseCharacterPhrase` que recibe un array de strings y dentro devuelve la frase más corta dentro del límite o un fallback.
+
+La aplicación maneja tres estados principales: carga, error y vacío.  
+Estos estados se controlan en el hook `useCharacter` y se reflejan en la UI mediante renderizado condicional en `App`.
+
+- **Carga**: se muestra un spinner con mensaje mientras se obtienen los datos.
+- **Error**: se muestra un mensaje con opción de recargar si la API falla.
+- **Vacío**: se muestra un mensaje indicando que no hay datos disponibles.
+- **Datos**: se renderiza la lista de personajes cuando la API responde correctamente.
+
+Cada estado tiene su propio componente (`LoadingMessage`, `ErrorMessage`, `ShowEmptyState`) para mantener la UI clara y reutilizable.  
+El flujo de renderizado sigue la prioridad: **loading → error → empty → data**.
 
 ## 🚀 Tecnologías
 
@@ -44,7 +55,7 @@ Mejorar la legibilidad de las tarjetas truncando el texto de ocupación largo y 
 
 ## 📦 Versión
 
-v0.2.0
+v0.3.0
 
 ## 📄 Licencia
 
