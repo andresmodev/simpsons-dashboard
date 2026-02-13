@@ -1,4 +1,4 @@
-import { reload } from "../../utils/services.js";
+import { reload } from "../../../utils/services.js";
 import styles from "./style.module.css";
 
 export default function ErrorMessage({ error }) {

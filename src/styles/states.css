@@ -1,0 +1,13 @@
+/* === Estilos básicos para mensajes de carga, error, vacío === */
+.containerMessage {
+  width: 100%;
+  padding: 1rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message {
+  font-size: 1.15rem;
+  font-weight: 500;
+}

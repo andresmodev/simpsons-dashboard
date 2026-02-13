@@ -1,0 +1,26 @@
+.footerContainer {
+  padding: var(--sp-large);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+
+.authorship {
+  max-width: 870px;
+  width: 100%;
+  padding: var(--sp-small);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.authorship p {
+  text-align: center;
+}

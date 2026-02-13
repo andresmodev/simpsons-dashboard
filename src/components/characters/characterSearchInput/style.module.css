@@ -1,0 +1,31 @@
+.searchContainer {
+  margin: 0 auto;
+  padding: var(--sp-large);
+  max-width: 870px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.inputSearch {
+  width: 350px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: var(--sp-small) var(--sp-medium);
+  font-size: 1rem;
+  font-family: var(--font-secondary);
+}
+
+@media (max-width: 768px) {
+  .searchContainer {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .inputSearch {
+    width: 100%;
+    padding: var(--sp-small);
+  }
+}

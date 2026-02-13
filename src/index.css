@@ -1,41 +1,30 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "./styles/reset.css";
+@import "./styles/fonts.css";
+@import "./styles/states.css";
+@import "./styles/variables.css";
 
-:root {
-  --background: #f0f9ff;
-  --background-card: #ffffff;
-  --background-green: #f0fdf4;
-  --background-red: #fef2f2;
-  --background-yellow-hover: #fefce8;
-  --border-yellow-hover: #facc15;
-  --border: #e5e7eb; /*0 solid*/
-  --color-text-primary: #0e0e0e;
-  --color-text-secondary: #555f6c;
-  --color-text-red: #b91c1c;
-  --color-text-green: #1f8646;
-  --color-text-card-hover: #ce9317;
-  --color-text-title-card-hover: #a26307;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--background);
   line-height: 1.3;
   min-height: 100vh;
+  font-family: var(--font-secondary);
 }
 
-/* === Estilos básicos para mensajes de carga, error, vacío === */
-.containerMessage {
-  width: 100%;
-  padding: 1rem 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+h1,
+h2,
+h3 {
+  font-family: var(--font-primary);
+  font-weight: 700;
 }
 
-.message {
-  font-size: 1.15rem;
-  font-weight: 500;
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
 }
