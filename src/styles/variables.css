@@ -1,0 +1,29 @@
+:root {
+  /* fuentes */
+  --font-primary: "RobotoCustom";
+  --font-secondary: "SpinnakerCustom";
+  /* padding */
+  --sp-small: 0.5rem;
+  --sp-medium: 1rem;
+  --sp-large: 1.5rem;
+  /* margin */
+  --mg-small: 1rem;
+  --mg-medium: 1.5rem;
+  --mg-large: 2rem;
+  /* colores */
+  --background: #f0f9ff;
+  --background-card: #ffffff;
+  --background-green: #f0fdf4;
+  --background-red: #fef2f2;
+  --background-yellow-hover: #fefce8;
+  --background-hamburguer: #e5e7eb;
+  --border-yellow-hover: #facc15;
+  --border: #4700a3; /*0 solid*/
+  --border-card: #e5e7eb;
+  --color-text-primary: #0e0e0e;
+  --color-text-secondary: #404244;
+  --color-text-red: #b91c1c;
+  --color-text-green: #1f8646;
+  --color-text-card-hover: #ce9317;
+  --color-text-title-card-hover: #a26307;
+}

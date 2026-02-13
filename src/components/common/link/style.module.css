@@ -1,0 +1,12 @@
+.link {
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.footer {
+  font-size: 0.8rem;
+  text-decoration: underline;
+  color: var(--color-text-secondary);
+}

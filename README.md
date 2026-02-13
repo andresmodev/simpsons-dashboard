@@ -18,27 +18,36 @@ Display a list of characters with support for loading and error states, persiste
 
 ### 🐱‍💻 Version Objective
 
-Handle loading, error, and empty states by implementing reusable UI components (spinner, error message, empty message) to improve user feedback.
+Create a user-friendly design, use warm, attractive colors, and make the application structure adaptable to different screen sizes, and also apply a tooltip to the card occupancy view.
 
 ### 📓 TO-DO
 
-- [x] Create a loading component with spinner and message
-- [x] Create an error component with descriptive message
-- [x] Create an empty state component for no data
-- [x] Integrate state handling into character list rendering
+[x] Fully styled the application
+[x] responsive design
+[x] improve folder structure
+[x] reusable components
+[x] organize global CSS and modules
+[x] custom hook to handle hamburger menu
+[x] functional and responsive header
+[x] functional and responsive main
+[x] functional and responsive footer
+[x] functional and responsive hero
+[x] functional and responsive about
+[x] functional characters section (card display)
+[x] search input component (visual only)
+[x] individual cards with good design and responsive
 
 ---
 
 ## 🧩 Features
 
-- [x] Fetch and render character
-- [x] Improve readability on the card
-- [x] Loading and error handling
-- [] Responsive design, UI components
-- [] Persistent state (localStorage)
-- [] Pagination
-- [] Filtering
-- [] Performance
+[x] Fetch and render character
+[x] Improve readability on the card
+[x] Loading and error handling
+[x] Responsive design, UI components
+[] Pagination
+[] Filtering
+[] Performance
 
 ---
 
@@ -48,15 +57,10 @@ Handle loading, error, and empty states by implementing reusable UI components (
 - **Hooks**: state and side effects
 - **api**: API communication
 - **constants**: configuration and endpoints
-
-The application manages three main states: loading, error, and empty. These states are controlled in the `useCharacter` hook and reflected in the UI through conditional rendering in `App`.
-
-- **Loading**: a spinner with a message is displayed while data is being fetched.
-- **Error**: an error message with a reload option is shown if the API request fails.
-- **Empty**: a message is displayed when no data is available.
-- **Data**: the character list is rendered when the API responds successfully.
-
-Each state has its own dedicated component (`LoadingMessage`, `ErrorMessage`, `ShowEmptyState`) to keep the UI clear and reusable. The rendering flow follows a strict priority: **loading → error → empty → data**.
+- 📝 **Reusable components**: In this version I focused on creating, managing, and implementing reusable components. I understood why React’s component-based approach speeds up development and improves maintainability. The application’s design is now practically complete, except for the pagination component which will be implemented in a future version.
+- 📝 **Theme handling**: I experimented with a custom hook for light/dark theme management. Although I decided not to keep dark mode due to visual inconsistencies, the experience taught me how to handle theme switching, which will be useful for future projects.
+- 📝 **LocalStorage**: I chose not to implement local storage since this app is primarily for displaying data (characters, filters, pagination) rather than persisting user-generated content. This keeps the focus on building a clean and interactive dashboard.
+- 📝 Pagination will be added in a future release once the logic is ready.
 
 ---
 
@@ -71,7 +75,7 @@ Each state has its own dedicated component (`LoadingMessage`, `ErrorMessage`, `S
 
 ## 📦 Version
 
-v0.3.0
+v0.4.0
 
 ---
 
