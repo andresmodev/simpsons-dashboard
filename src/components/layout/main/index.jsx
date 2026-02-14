@@ -8,7 +8,16 @@ import ShowEmptyState from "../../states/showEmptyState/index.jsx";
 
 import styles from "./style.module.css";
 
-function Main({ characters, isLoading, error }) {
+function Main({
+  characters,
+  isLoading,
+  error,
+  currentPage,
+  pagesInfo,
+  onToNext,
+  onToPrev,
+  onToPage,
+}) {
   return (
     <main className={styles.container}>
       <Hero />
@@ -24,7 +33,14 @@ function Main({ characters, isLoading, error }) {
       ) : characters.length === 0 ? (
         <ShowEmptyState />
       ) : (
-        <CharacterList characters={characters} />
+        <CharacterList
+          characters={characters}
+          currentPage={currentPage}
+          pagesInfo={pagesInfo}
+          onToNext={onToNext}
+          onToPrev={onToPrev}
+          onToPage={onToPage}
+        />
       )}
     </main>
   );

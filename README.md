@@ -18,24 +18,14 @@ Display a list of characters with support for loading and error states, persiste
 
 ### 🐱‍💻 Version Objective
 
-Create a user-friendly design, use warm, attractive colors, and make the application structure adaptable to different screen sizes, and also apply a tooltip to the card occupancy view.
+Design and implement a user-friendly pagination system to enhance navigation across character cards. The goal is to provide a smooth browsing experience with warm, visually appealing colors, ensure the layout adapts seamlessly to different screen sizes.
 
 ### 📓 TO-DO
 
-[x] Fully styled the application
-[x] responsive design
-[x] improve folder structure
-[x] reusable components
-[x] organize global CSS and modules
-[x] custom hook to handle hamburger menu
-[x] functional and responsive header
-[x] functional and responsive main
-[x] functional and responsive footer
-[x] functional and responsive hero
-[x] functional and responsive about
-[x] functional characters section (card display)
-[x] search input component (visual only)
-[x] individual cards with good design and responsive
+- [x] Create a reusable pagination component
+- [x] Implement pagination logic to handle multiple pages of characters
+- [x] Ensure responsive design for pagination controls across devices
+- [x] Custom hook handles cache and prefetch to improve app performance
 
 ---
 
@@ -45,7 +35,7 @@ Create a user-friendly design, use warm, attractive colors, and make the applica
 [x] Improve readability on the card
 [x] Loading and error handling
 [x] Responsive design, UI components
-[] Pagination
+[x] Pagination
 [] Filtering
 [] Performance
 
@@ -57,10 +47,11 @@ Create a user-friendly design, use warm, attractive colors, and make the applica
 - **Hooks**: state and side effects
 - **api**: API communication
 - **constants**: configuration and endpoints
-- 📝 **Reusable components**: In this version I focused on creating, managing, and implementing reusable components. I understood why React’s component-based approach speeds up development and improves maintainability. The application’s design is now practically complete, except for the pagination component which will be implemented in a future version.
-- 📝 **Theme handling**: I experimented with a custom hook for light/dark theme management. Although I decided not to keep dark mode due to visual inconsistencies, the experience taught me how to handle theme switching, which will be useful for future projects.
-- 📝 **LocalStorage**: I chose not to implement local storage since this app is primarily for displaying data (characters, filters, pagination) rather than persisting user-generated content. This keeps the focus on building a clean and interactive dashboard.
-- 📝 Pagination will be added in a future release once the logic is ready.
+- 📝 **Pagination logic and caching**: In this version I focused on designing and implementing a robust pagination system. I added my custom hook caching with useRef to avoid unnecessary re-fetches. This improved performance and made navigation between pages smoother.
+- 📝 **Prefetch optimization**: I added prefetching of the next page, so data is ready before the user navigates forward. This reduced waiting times and made the experience more fluid.
+- 📝 **Reusable pagination component**: I created a dedicated CharacterPagination component that receives the current page, metadata, and navigation functions from the hook. It dynamically renders page buttons, highlights the active page, and disables navigation controls when appropriate. This separation of logic (hook) and presentation (component) improved clarity and maintainability.
+- 📝 **Responsive design**: The pagination component was styled with CSS Modules, ensuring consistent design and responsiveness across different screen sizes. Buttons adapt to smaller screens by wrapping into multiple rows when needed.
+- 📝 **Future improvements**: While the current implementation covers caching, prefetch, and navigation, future versions may explore cache limits, adaptive ranges for mobile devices, and additional UI enhancements.
 
 ---
 
@@ -75,7 +66,7 @@ Create a user-friendly design, use warm, attractive colors, and make the applica
 
 ## 📦 Version
 
-v0.4.0
+v0.5.0
 
 ---
 

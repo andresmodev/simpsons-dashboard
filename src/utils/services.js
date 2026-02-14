@@ -11,3 +11,10 @@ export const chooseCharacterPhrase = (phrases) => {
 
 // recargar pantalla
 export const reload = () => window.location.reload();
+
+// crear rango dinámico para la paginación
+export const getPageRange = (currentPage, totalPages, range = 5) => {
+  const start = Math.max(1, currentPage - Math.floor(range / 2));
+  const end = Math.min(totalPages, start + range - 1);
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+};
