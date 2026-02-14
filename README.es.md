@@ -8,24 +8,14 @@ Mostrar una lista de personajes con soporte para estados de carga y error, persi
 
 ## 🐱‍💻 Objetivo de la versión
 
-Crear un diseño agradable al usuario, usar colores cálidos, bonitos, hacer que la estructura de la aplicación se adapte a diferentes tamaños de pantallas, además aplicar un tooltip en la vista de ocupación de la tarjeta.
+Diseñar e implementar un sistema de paginación intuitivo para optimizar la navegación entre las tarjetas de personaje. El objetivo es ofrecer una experiencia de navegación fluida con colores cálidos y visualmente atractivos, garantizar que el diseño se adapte perfectamente a diferentes tamaños de pantalla.
 
 ## 📓 Tareas pendientes
 
-- [x] estilar completamente
-- [x] diseño responsivo
-- [x] estructurar mejor las carpetas
-- [x] componentes reutilizables
-- [x] organizar css global y moduls
-- [x] custom hook para manejar el menú hamburguesa
-- [x] header funcional y responsivo
-- [x] main funcional y responsivo
-- [x] footer funcional y responsivo
-- [x] hero funcional y responsivo
-- [x] about funcional y responsivo
-- [x] characters funcional en la parte de mostrar las tarjetas
-- [x] componente input de busqueda solo visual
-- [x] tarjetas individuales con buen diseño y responsivas
+- [x] Crear un componente de paginación reutilizable
+- [x] Implementar lógica de paginación para manejar múltiples páginas de caracteres
+- [x] Garantizar un diseño responsivo para los controles de paginación en todos los dispositivos
+- [x] Custom hook maneja cache y prefetch para mejorar el rendimiento de la app
 
 ## 🧩 Funcionalidades
 
@@ -33,7 +23,7 @@ Crear un diseño agradable al usuario, usar colores cálidos, bonitos, hacer que
 - [x] Mejorar legibilidad en la tarjeta
 - [x] Manejo de carga y error
 - [x] Diseño responsivo, componentes de UI
-- [] Paginación
+- [x] Paginación
 - [] Filtrado
 - [] Rendimiento
 
@@ -43,10 +33,11 @@ Crear un diseño agradable al usuario, usar colores cálidos, bonitos, hacer que
 - **Hooks**: estado y efectos secundarios
 - **api**: comunicación con la API
 - **constants**: configuración y endpoints
-- 📝 **Reusable components**: En esta versión me centré en la creación, gestión e implementación de componentes reutilizables. Comprendí por qué el enfoque basado en componentes de React acelera el desarrollo y mejora la mantenibilidad. El diseño de la aplicación está prácticamente completo, excepto el componente de paginación, que se implementará en una versión futura.
-- 📝 **Theme handling**: Experimenté con un custom hook para gestionar el modo claro/oscuro. Aunque decidí no mantener el modo oscuro debido a inconsistencias visuales, la experiencia me enseñó a gestionar el cambio de tema, lo cual me será útil para proyectos futuros.
-- 📝 **LocalStorage**: Opté por no implementar almacenamiento local, ya que esta aplicación se centra principalmente en mostrar datos (caracteres, filtros, paginación) en lugar de almacenar contenido generado por el usuario. Esto permite centrarse en crear un panel de control limpio e interactivo.
-- 📝 La paginación se agregará en una versión futura una vez que la lógica esté lista.
+- 📝 **Pagination logic and caching**: En esta versión, me centré en diseñar e implementar un sistema de paginación robusto. Agregué a mi custom hook el almacenamiento en caché con useRef para evitar recargas innecesarias. Esto mejoró el rendimiento y facilitó la navegación entre páginas.
+- 📝 **Prefetch optimization**: Añadí la precarga de la página siguiente, para que los datos estén listos antes de que el usuario navegue hacia adelante. Esto redujo los tiempos de espera y mejoró la experiencia.
+- 📝 **Reusable pagination component**: Creé un componente CharacterPagination dedicado que recibe la página actual, los metadatos y las funciones de navegación del gancho. Representa dinámicamente los botones de la página, resalta la página activa y desactiva los controles de navegación cuando corresponde. Esta separación de la lógica (gancho) y la presentación (componente) mejoró la claridad y la facilidad de mantenimiento.
+- 📝 **Responsive design**: El componente de paginación se diseñó con módulos CSS, lo que garantiza un diseño uniforme y una respuesta fluida en diferentes tamaños de pantalla. Los botones se adaptan a pantallas más pequeñas, ajustándose en varias filas cuando es necesario.
+- 📝 **Future improvements**: Si bien la implementación actual cubre el almacenamiento en caché, la búsqueda previa y la navegación, las versiones futuras pueden explorar límites de caché, rangos adaptables para dispositivos móviles y mejoras adicionales de la interfaz de usuario.
 
 ## 🚀 Tecnologías
 
@@ -57,7 +48,7 @@ Crear un diseño agradable al usuario, usar colores cálidos, bonitos, hacer que
 
 ## 📦 Versión
 
-v0.4.0
+v0.5.0
 
 ## 📄 Licencia
 
