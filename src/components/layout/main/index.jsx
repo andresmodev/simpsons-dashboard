@@ -17,6 +17,8 @@ function Main({
   onToNext,
   onToPrev,
   onToPage,
+  inputValue,
+  handleChange,
 }) {
   return (
     <main className={styles.container}>
@@ -25,7 +27,7 @@ function Main({
       <h1 className={styles.title} id="characters">
         Characters
       </h1>
-      <CharacterSearchInput />
+      <CharacterSearchInput inputValue={inputValue} handleChange={handleChange} />
       {isLoading ? (
         <LoadingMessage />
       ) : error ? (

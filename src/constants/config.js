@@ -25,3 +25,6 @@ export const IMAGE_PATH = "https://cdn.thesimpsonsapi.com/500";
 
 // limite de caracteres por frase
 export const MAX_PHRASE_LENGTH = 40;
+
+// ruta hacia el repo de github del proyecto
+export const githubRepo = "https://github.com/andresmodev/simpsons-dashboard";

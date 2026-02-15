@@ -8,14 +8,14 @@ Mostrar una lista de personajes con soporte para estados de carga y error, persi
 
 ## 🐱‍💻 Objetivo de la versión
 
-Diseñar e implementar un sistema de paginación intuitivo para optimizar la navegación entre las tarjetas de personaje. El objetivo es ofrecer una experiencia de navegación fluida con colores cálidos y visualmente atractivos, garantizar que el diseño se adapte perfectamente a diferentes tamaños de pantalla.
+Diseñar e implementar un filtro de entrada adaptable que permita a los usuarios buscar y refinar rápidamente las tarjetas de personajes. El objetivo es mejorar la usabilidad mediante el filtrado dinámico, garantizando que la lógica de búsqueda se integre a la perfección con el sistema de paginación existente y manteniendo una interfaz clara e intuitiva.
 
 ## 📓 Tareas pendientes
 
-- [x] Crear un componente de paginación reutilizable
-- [x] Implementar lógica de paginación para manejar múltiples páginas de caracteres
-- [x] Garantizar un diseño responsivo para los controles de paginación en todos los dispositivos
-- [x] Custom hook maneja cache y prefetch para mejorar el rendimiento de la app
+- [x] Implementar lógica de filtrado en el custom hook para manejar consultas de búsqueda
+- [x] Garantizar la compatibilidad entre el filtrado y la paginación (los resultados filtrados se actualizan correctamente)
+- [x] Aplicar debounce al filtro para mejorar el rendimiento de busqueda, el debounce se hace de manera local porque la API de los simpson no recibe parámetros de búsqueda
+- [x] Documentar el flujo de trabajo del filtro y actualizar el README con ejemplos de uso
 
 ## 🧩 Funcionalidades
 
@@ -24,7 +24,7 @@ Diseñar e implementar un sistema de paginación intuitivo para optimizar la nav
 - [x] Manejo de carga y error
 - [x] Diseño responsivo, componentes de UI
 - [x] Paginación
-- [] Filtrado
+- [x] Filtrado
 - [] Rendimiento
 
 ## 🏗 Arquitectura
@@ -33,11 +33,12 @@ Diseñar e implementar un sistema de paginación intuitivo para optimizar la nav
 - **Hooks**: estado y efectos secundarios
 - **api**: comunicación con la API
 - **constants**: configuración y endpoints
-- 📝 **Pagination logic and caching**: En esta versión, me centré en diseñar e implementar un sistema de paginación robusto. Agregué a mi custom hook el almacenamiento en caché con useRef para evitar recargas innecesarias. Esto mejoró el rendimiento y facilitó la navegación entre páginas.
-- 📝 **Prefetch optimization**: Añadí la precarga de la página siguiente, para que los datos estén listos antes de que el usuario navegue hacia adelante. Esto redujo los tiempos de espera y mejoró la experiencia.
-- 📝 **Reusable pagination component**: Creé un componente CharacterPagination dedicado que recibe la página actual, los metadatos y las funciones de navegación del gancho. Representa dinámicamente los botones de la página, resalta la página activa y desactiva los controles de navegación cuando corresponde. Esta separación de la lógica (gancho) y la presentación (componente) mejoró la claridad y la facilidad de mantenimiento.
-- 📝 **Responsive design**: El componente de paginación se diseñó con módulos CSS, lo que garantiza un diseño uniforme y una respuesta fluida en diferentes tamaños de pantalla. Los botones se adaptan a pantallas más pequeñas, ajustándose en varias filas cuando es necesario.
-- 📝 **Future improvements**: Si bien la implementación actual cubre el almacenamiento en caché, la búsqueda previa y la navegación, las versiones futuras pueden explorar límites de caché, rangos adaptables para dispositivos móviles y mejoras adicionales de la interfaz de usuario.
+- 📝 **Filtro de busqueda con debounce**: Se introdujo un mecanismo de búsqueda sin rebotes mediante useRef y useEffect. El valor de entrada se actualiza inmediatamente, pero el filtrado solo se activa tras 500 ms de inactividad. Esto reduce las repeticiones de renderizado innecesarias y simula el comportamiento de búsqueda real.
+- 📝 **Estado derivado para resultados filtrados**: Se agregó un estado `filteredCharacters` derivado de la matriz de caracteres sin procesar. Esto garantiza que la interfaz de usuario muestre el conjunto de datos completo o el subconjunto filtrado según el valor de entrada sin rebote.
+- 📝 **Implementación de filtrado local**: Dado que la API de Los Simpson no admite parámetros de consulta para la búsqueda, el filtrado se realiza localmente en los caracteres de la página actual. Este diseño destaca la adaptabilidad a las limitaciones de la API, a la vez que ofrece una experiencia de usuario ágil.
+- 📝 **Mejoras en custom hook**: El useCharacter ahora gestiona tanto los datos sin procesar `characters` como los resultados filtrados y sin rebotes `filteredCharacters`. Esta separación de tareas mejora la claridad y permite reutilizar el gancho en futuras situaciones.
+- 📝 **Arquitectura limpia con refs**: Se aprovechó useRef para almacenar los ID de tiempo de espera para la lógica de rebote, evitando así rerenderizados innecesarios. Esto demuestra las mejores prácticas para gestionar valores mutables en diferentes renderizados.
+- 📝 **Mejoras futuras**: Las próximas versiones podrían explorar el filtrado global mediante la precarga de varias páginas, la integración de API con parámetros de búsqueda o la extensión de la lógica de rebote a las búsquedas remotas. Esto permitirá comparar estrategias de filtrado locales y remotas.
 
 ## 🚀 Tecnologías
 
@@ -48,7 +49,7 @@ Diseñar e implementar un sistema de paginación intuitivo para optimizar la nav
 
 ## 📦 Versión
 
-v0.5.0
+v0.6.0
 
 ## 📄 Licencia
 

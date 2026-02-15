@@ -5,7 +5,7 @@ import Footer from "./components/layout/footer/index.jsx";
 
 function App() {
   const {
-    characters,
+    filteredCharacters,
     isLoading,
     error,
     currentPage,
@@ -13,13 +13,15 @@ function App() {
     goToNext,
     goToPage,
     goToPrev,
+    searchValue,
+    handleChange,
   } = useCharacter();
 
   return (
     <>
       <Header />
       <Main
-        characters={characters}
+        characters={filteredCharacters}
         isLoading={isLoading}
         error={error}
         currentPage={currentPage}
@@ -27,6 +29,8 @@ function App() {
         onToNext={goToNext}
         onToPrev={goToPrev}
         onToPage={goToPage}
+        inputValue={searchValue}
+        handleChange={handleChange}
       />
       <Footer />
     </>

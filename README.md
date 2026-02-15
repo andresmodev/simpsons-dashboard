@@ -18,26 +18,26 @@ Display a list of characters with support for loading and error states, persiste
 
 ### 🐱‍💻 Version Objective
 
-Design and implement a user-friendly pagination system to enhance navigation across character cards. The goal is to provide a smooth browsing experience with warm, visually appealing colors, ensure the layout adapts seamlessly to different screen sizes.
+Design and implement a responsive input filter to allow users to quickly search and refine character cards. The goal is to improve usability by enabling dynamic filtering, ensuring that the search logic integrates seamlessly with the existing pagination system, and maintaining a clean, intuitive interface.
 
 ### 📓 TO-DO
 
-- [x] Create a reusable pagination component
-- [x] Implement pagination logic to handle multiple pages of characters
-- [x] Ensure responsive design for pagination controls across devices
-- [x] Custom hook handles cache and prefetch to improve app performance
+- [x] Implement filtering logic in the custom hook to handle search queries
+- [x] Ensure compatibility between filtering and pagination (filtered results update correctly)
+- [x] Apply debounce to the filter to improve search performance, debounce is done locally because the API does not receive search parameters
+- [x] Document the filter workflow and update the README with usage examples
 
 ---
 
 ## 🧩 Features
 
-[x] Fetch and render character
-[x] Improve readability on the card
-[x] Loading and error handling
-[x] Responsive design, UI components
-[x] Pagination
-[] Filtering
-[] Performance
+- [x] Fetch and render character
+- [x] Improve readability on the card
+- [x] Loading and error handling
+- [x] Responsive design, UI components
+- [x] Pagination
+- [x] Filtering
+- [] Performance
 
 ---
 
@@ -47,11 +47,17 @@ Design and implement a user-friendly pagination system to enhance navigation acr
 - **Hooks**: state and side effects
 - **api**: API communication
 - **constants**: configuration and endpoints
-- 📝 **Pagination logic and caching**: In this version I focused on designing and implementing a robust pagination system. I added my custom hook caching with useRef to avoid unnecessary re-fetches. This improved performance and made navigation between pages smoother.
-- 📝 **Prefetch optimization**: I added prefetching of the next page, so data is ready before the user navigates forward. This reduced waiting times and made the experience more fluid.
-- 📝 **Reusable pagination component**: I created a dedicated CharacterPagination component that receives the current page, metadata, and navigation functions from the hook. It dynamically renders page buttons, highlights the active page, and disables navigation controls when appropriate. This separation of logic (hook) and presentation (component) improved clarity and maintainability.
-- 📝 **Responsive design**: The pagination component was styled with CSS Modules, ensuring consistent design and responsiveness across different screen sizes. Buttons adapt to smaller screens by wrapping into multiple rows when needed.
-- 📝 **Future improvements**: While the current implementation covers caching, prefetch, and navigation, future versions may explore cache limits, adaptive ranges for mobile devices, and additional UI enhancements.
+- 📝 **Debounced input filtering**: Introduced a debounced search mechanism using useRef and useEffect. The input value updates immediately, but filtering only triggers after 500ms of inactivity. This reduces unnecessary re-renders and simulates real-world search behavior.
+
+- 📝 **Derived state for filtered results**: Added a filteredCharacters state derived from the raw characters array. This ensures the UI displays either the full dataset or the filtered subset based on the debounced input value.
+
+- 📝 **Local filtering implementation**: Since the Simpsons API does not support query parameters for search, filtering is performed locally on the characters of the current page. This design highlights adaptability to API limitations while still providing a responsive user experience.
+
+- 📝 **Custom hook enhancements**: The useCharacter hook now manages both the raw data (characters) and the debounced filtered results (filteredCharacters). This separation of concerns improves clarity and makes the hook reusable for future scenarios.
+
+- 📝 **Clean architecture with refs**: Leveraged useRef to store timeout IDs for debounce logic, avoiding unnecessary re-renders. This demonstrates best practices in managing mutable values across renders.
+
+- 📝 **Future improvements**: Upcoming versions may explore global filtering by prefetching multiple pages, integrating APIs with search parameters, or extending the debounce logic to remote fetches. This will allow comparisons between local and remote filtering strategies.
 
 ---
 
@@ -66,7 +72,7 @@ Design and implement a user-friendly pagination system to enhance navigation acr
 
 ## 📦 Version
 
-v0.5.0
+v0.6.0
 
 ---
 

@@ -9,9 +9,13 @@ export const useCharacter = () => {
 
   const [currentPage, setCurrentPage] = useState(1); // pagina actual
   const [paginationInfo, setPaginationInfo] = useState({}); // metadatos de la api
+  const [searchValue, setSearchValue] = useState(""); // valor del input de búsqueda
+  const [debouncedValue, setDebouncedValue] = useState(""); // valor del debounced para filtrar de manera local
 
-  const cacheRef = useRef({});
+  const cacheRef = useRef({}); // objeto para guardar el cache y hacer prefetch
+  const timeoutIdRef = useRef(null); // para guardar el id del timeout y hacer debounce
 
+  // efecto para obtener los datos ya sea del cache o haciendo el fetching de datos
   useEffect(() => {
     if (cacheRef.current[currentPage]) {
       setCharacters(cacheRef.current[currentPage]);
@@ -50,6 +54,23 @@ export const useCharacter = () => {
     }
   }, [currentPage]);
 
+  // useEffect para crear y limpiar el timeout del debounce
+  useEffect(() => {
+    // limpiar el timeout previo si existe
+    if (timeoutIdRef.current) {
+      clearTimeout(timeoutIdRef.current);
+    }
+
+    // crear uno nuevo
+    timeoutIdRef.current = setTimeout(() => {
+      setDebouncedValue(searchValue);
+    }, 500);
+
+    // cleanup al desmontar o antes de ejecutar el siguiente efecto
+    return () => clearTimeout(timeoutIdRef.current);
+  }, [searchValue]);
+
+  // funciones que manejan la paginación
   const goToNext = () => {
     if (currentPage < paginationInfo.pages) {
       setCurrentPage((prev) => prev + 1);
@@ -68,6 +89,16 @@ export const useCharacter = () => {
     }
   };
 
+  // actualizar el estado del input y derivar el estado characters
+  const handleChange = (value) => setSearchValue(value);
+
+  const filteredCharacters =
+    debouncedValue === ""
+      ? characters
+      : characters.filter((character) =>
+          character.name.toLowerCase().includes(debouncedValue.trim().toLowerCase()),
+        );
+
   return {
     characters,
     isLoading,
@@ -77,5 +108,8 @@ export const useCharacter = () => {
     goToPrev,
     paginationInfo,
     currentPage,
+    searchValue,
+    handleChange,
+    filteredCharacters,
   };
 };
