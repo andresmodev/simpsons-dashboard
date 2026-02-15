@@ -3,6 +3,7 @@ import Button from "../../common/button/index.jsx";
 import Icon from "../../common/icon/index.jsx";
 import Link from "../../common/link/index.jsx";
 import Logo from "../../common/logo/index.jsx";
+import { githubRepo } from "../../../constants/config.js";
 import styles from "./style.module.css";
 
 function Header() {
@@ -32,7 +33,7 @@ function Header() {
 
         <ul className={styles.navActions}>
           <li className={`${styles.navItem} ${styles.navItemIcon}`}>
-            <Link href="https://github.com/andresmodev/" newTab>
+            <Link href={githubRepo} newTab>
               <Icon type="github" />
             </Link>
           </li>
