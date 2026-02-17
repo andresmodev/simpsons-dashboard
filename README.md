@@ -1,35 +1,40 @@
 # Simmpsons Dashboard
 
+A responsive web application to explore characters from The Simpsons, built with React.
+This project was developed iteratively through multiple versions, simulating a real-world workflow with branches, pull requests, and tagged releases. It has now reached its deliverable version and is ready for deployment.
+
 ---
 
 > 📖 También disponible en [Español](./README.es.md)
 
 ---
 
-Frontend application built with React focused on scalable state managment, error handling, and performance optimization with consuming a public API.
+## 🌐 Deployment
+
+This project is deployed on Vercel:
+🔗 Live Demo URL – [Simpsons-Dashboard](https://simpsons-dashboard-kappa.vercel.app/)
 
 ---
 
-## 🎯 Objective
+## 📺 What is Simpsons Dashboard?
 
-Display a list of characters with support for loading and error states, persistence, pagination, and filtering, following real-world frontend architecture practices.
-
----
-
-### 🐱‍💻 Version Objective
-
-Integrate React’s Context API to centralize state management and eliminate prop drilling. The goal is to improve scalability and maintainability by allowing components to consume global state directly, ensuring cleaner component hierarchies and a more professional architecture.
-
-### 📓 TO-DO
-
-- [x] Create CharacterContext and CharacterProvider to wrap the application and expose global state
-- [x] Integrate the existing useCharacter hook inside the provider to manage logic and state centrally
-- [x] Implement a custom hook useCharacterContext to simplify context consumption across components
-- [x] Refactor Main, CharacterList, CharacterPagination, and CharacterInput to consume context directly instead of receiving props
+Simpsons Dashboard is a React-based application that consumes a public Simpsons API to display character information in a clean, interactive interface.
+The project was designed with scalability and maintainability in mind, applying architectural principles such as separation of concerns, reusable components, and clear folder structure.
 
 ---
 
-## 🧩 Features
+## 🎯 Main Features
+
+- 🖼️ Character cards: Show character image, name, occupation (truncated to avoid overflow), age, status, and a selected iconic phrase (logic applied to avoid overly long quotes).
+- 📑 Pagination: Navigate through multiple pages of characters with cached results and prefetch optimization for smoother transitions.
+- 🔍 Local filtering with debounce: Search characters by name with a debounced input to reduce unnecessary re-renders.
+- 🧩 Context API integration: Implemented useContext to eliminate prop drilling and allow components to consume global state directly.
+- 🎨 Responsive design: Built with CSS Modules to ensure consistent styling and adaptability across screen sizes.
+- 🛠️ Custom hooks: Encapsulated logic for characters, pagination, filtering, and hamburger menu (responsive navbar).
+
+---
+
+## 🧩 Goals
 
 - [x] Fetch and render character
 - [x] Improve readability on the card
@@ -41,35 +46,57 @@ Integrate React’s Context API to centralize state management and eliminate pro
 
 ---
 
-## 🏗 Architecture
+## 🛠️ Technologies Used
 
-- **Componets**: presentational UI
-- **Hooks**: state and side effects
-- **api**: API communication
-- **constants**: configuration and endp\*\*: Introduced a debounced search mechanism using useRef and useEffect. The input value updates immediately, but filtering only triggers after 500ms of inactivity. This reduces unnecessary re-renders and simulates real-world search behavior.
-
-- 📝 **Context API integration**: Implemented CharacterContext and CharacterProvider to centralize state management. This eliminated prop drilling and allowed components to consume global state directly.
-
-- 📝 **Custom context hook**: Added useCharacterContext to simplify context consumption and ensure consistency across components.
-
-- 📝 **Cleaner component hierarchy**: Components like CharacterList, CharacterPagination, and CharacterInput now consume context directly, reducing unnecessary prop passing from App and Main.
-
-- 📝 **Scalable architecture**: By separating logic into hooks and context, the project is now more maintainable and ready for future extensions (e.g., global theming, authentication).
+- React (functional components + hooks)
+- Context API for global state management
+- CSS Modules for scoped, responsive styling
+- JavaScript (ES6+)
+- Git + GitHub (branches, PRs, tags for versioning)
 
 ---
 
-## 🚀 Tech Stack
+## 🏗 Project Structure
 
-- React
-- Vite
-- JavaScript
-- Css module
+📁 src/
+├── api/ # API service functions (fetchCharacters)
+├── components/ # Reusable UI components (Header, Footer, Main, CharacterList, etc.)
+├── constants/ # Config values (API endpoints, etc.)
+├── context/ # Context provider and custom hook (CharacterContext, useCharacterContext)
+├── hooks/ # Custom hooks (useCharacter, useHamburger)
+├── styles/ # CSS Modules for styling
+├── utils/ # Function to truncate text, validation, etc
+└── App.jsx # Root component
 
 ---
 
-## 📦 Version
+## 📐 Architectural Principles
 
-v0.7.0
+- Separation of concerns: Logic in hooks, UI in components, constants in dedicated files.
+
+- Reusable components: Pagination, input, and list components designed for flexibility.
+
+- Scalability: Context API introduced to manage global state cleanly.
+
+- Maintainability: Clear folder structure and documented workflow.
+
+---
+
+## 🛠️ Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/andresmo23/simpsons-dashboard.git
+
+# Enter the project directory
+cd simpsons-dashboard
+
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
+```
 
 ---
 

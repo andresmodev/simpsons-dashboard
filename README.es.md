@@ -1,61 +1,103 @@
-# Simmpsons Dashboard
+# 📺 Simpsons Dashboard
 
-Aplicación frontend construida con React enfocada en un manejo de estado escalable, gestión de errores y optimización de rendimiento al consumir una API pública.
+Una aplicación web responsiva para explorar personajes de Los Simpson, construida con React.
+Este proyecto fue desarrollado de manera iterativa a través de múltiples versiones, simulando un flujo de trabajo real con ramas, pull requests y versiones etiquetadas. Ahora ha alcanzado su versión entregable y está listo para desplegarse.
 
-## 🎯 Objetivo
+---
 
-Mostrar una lista de personajes con soporte para estados de carga y error, persistencia, paginación y filtrado, siguiendo prácticas de arquitectura frontend del mundo real.
+## 📺 ¿Qué es Simpsons Dashboard?
 
-## 🐱‍💻 Objetivo de la versión
+Simpsons Dashboard es una aplicación basada en React que consume una API pública de Los Simpson para mostrar información de personajes en una interfaz limpia e interactiva.
+El proyecto fue diseñado pensando en la escalabilidad y mantenibilidad, aplicando principios arquitectónicos como separación de responsabilidades, componentes reutilizables y una estructura de carpetas clara.
 
-Integrar la API de contexto de React para centralizar la gestión de estados y eliminar la perforación de propiedades. El objetivo es mejorar la escalabilidad y la facilidad de mantenimiento al permitir que los componentes consuman el estado global directamente, garantizando jerarquías de componentes más limpias y una arquitectura más profesional.
+---
 
-## 📓 Tareas pendientes
+## 🎯 Funcionalidades principales
 
-- [x] Cree CharacterContext y CharacterProvider para encapsular la aplicación y exponer el estado global
-- [x] Integre el hook useCharacter existente dentro del proveedor para administrar la lógica y el estado de forma centralizada
-- [x] Implementar un custom hook useCharacterContext para simplificar el consumo de contexto en todos los componentes
-- [x] Refactorizar Main, CharacterList, CharacterPagination y CharacterInput para consumir el contexto directamente en lugar de recibir propiedades
+- 🖼️ Tarjetas de personajes: Muestran imagen, nombre, ocupación (truncada para evitar desbordamiento), edad, estado y una frase icónica seleccionada (con lógica para evitar frases demasiado largas).
 
-## 🧩 Funcionalidades
+- 📑 Paginación: Navega entre múltiples páginas de personajes con resultados en caché y optimización de prefetch para transiciones más fluidas.
+
+- 🔍 Filtrado local con debounce: Busca personajes por nombre con un input con debounce para reducir renders innecesarios.
+
+- 🧩 Integración con Context API: Se implementó useContext para eliminar el prop drilling y permitir que los componentes consuman estado global directamente.
+
+- 🎨 Diseño responsivo: Construido con CSS Modules para asegurar estilos consistentes y adaptabilidad en diferentes tamaños de pantalla.
+
+- 🛠️ Custom hooks: Lógica encapsulada para personajes, paginación, filtrado y menú hamburguesa (navbar responsivo).
+
+---
+
+## 🧩 Objetivos
 
 - [x] Obtener y renderizar personajes
-- [x] Mejorar legibilidad en la tarjeta
-- [x] Manejo de carga y error
-- [x] Diseño responsivo, componentes de UI
+- [x] Mejorar la legibilidad en las tarjetas
+- [x] Manejo de carga y errores
+- [x] Diseño responsivo y componentes de UI
 - [x] Paginación
 - [x] Filtrado
-- [x] Mejor desempeño con useContext
+- [x] Rendimiento con context
 
-## 🏗 Arquitectura
+---
 
-- **Components**: UI de presentación
-- **Hooks**: estado y efectos secundarios
-- **api**: comunicación con la API
-- **constants**: configuración y endpoints
-- 📝 **Integración de la API Context**: Se implementaron CharacterContext y CharacterProvider para centralizar la gestión de estados. Esto eliminó la perforación de propiedades y permitió que los componentes consumieran el estado global directamente.
+## 🛠️ Tecnologías usadas
 
-- 📝 **Custom context hook**: Se agregó useCharacterContext para simplificar el consumo de contexto y garantizar la coherencia entre los componentes.
+- React (componentes funcionales + hooks)
+- Context API para manejo de estado global
+- CSS Modules para estilos responsivos y con alcance local
+- JavaScript (ES6+)
+- Git + GitHub (ramas, PRs, tags para versionado)
 
-- 📝 **Jerarquía de componentes más limpia**: Componentes como CharacterList, CharacterPagination y CharacterInput ahora consumen contexto directamente, lo que reduce el paso innecesario de propiedades desde App y Main.
+---
 
-- 📝 **Arquitectura esclable**: Al separar la lógica en hooks y contexto, el proyecto ahora es más fácil de mantener y está listo para futuras extensiones (por ejemplo, temas globales, autenticación).
+## 🏗 Estructura del proyecto
 
-## 🚀 Tecnologías
+📁 src/
+├── api/ # Funciones de servicio API (fetchCharacters)
+├── components/ # Componentes reutilizables de UI (Header, Footer, Main, CharacterList, etc.)
+├── constants/ # Valores de configuración (endpoints de API, etc.)
+├── context/ # Provider de contexto y custom hook (CharacterContext, useCharacterContext)
+├── hooks/ # Custom hooks (useCharacter, useHamburger)
+├── styles/ # CSS Modules para estilos
+├── utils/ # Funciones para truncar texto, validaciones, etc.
+└── App.jsx # Componente raíz
 
-- React
-- Vite
-- JavaScript
-- CSS Modules
+---
 
-## 📦 Versión
+## 📐 Principios de arquitectura
 
-v0.7.0
+- _Separación de responsabilidades_: Lógica en hooks, UI en componentes, constantes en archivos dedicados.
+- _Componentes reutilizables_: Paginación, input y lista diseñados para flexibilidad.
+- _Escalabilidad_: Context API introducido para manejar estado global de forma limpia.
+- _Mantenibilidad_: Estructura de carpetas clara y flujo de trabajo documentado.
+
+---
+
+## 🛠️ Instalación
+
+```bash
+# Clona el repositorio
+git clone https://github.com/andresmo23/simpsons-dashboard.git
+
+# Entra al directorio
+cd simpsons-dashboard
+
+# Instala las dependencias
+npm install
+
+# Ejecuta el servidor de desarrollo
+npm run dev
+```
+
+---
 
 ## 📄 Licencia
 
 Este proyecto está bajo la licencia MIT. Puedes usarlo libremente con atribución.
 
+---
+
 ## 🦉 Autor
 
-Desarrollador frontend junior Gonzalo Montoya. Si te gustó, dale una estrella en GitHub ⭐
+Desarrollado por Andrés, frontend developer junior.
+Si te gustó, ¡dale una estrella ⭐ en GitHub!

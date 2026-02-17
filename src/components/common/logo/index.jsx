@@ -4,7 +4,7 @@ function Logo({ variant }) {
   return (
     <div className={`${styles.logo} ${styles[variant]}`}>
       <img
-        src="/public/logo-donut.svg"
+        src="/logo-donut.svg"
         alt="Donut logo of the Simpsons Dashboard"
         className={styles.img}
       />
