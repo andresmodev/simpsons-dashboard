@@ -1,6 +1,9 @@
+import { useCharacterContext } from "../../../context/useCharacterContext.js";
 import styles from "./style.module.css";
 
-function CharacterSearchInput({ inputValue, handleChange }) {
+function CharacterSearchInput() {
+  const { searchValue, handleChange } = useCharacterContext();
+
   return (
     <div className={styles.searchContainer}>
       <label htmlFor="search">Search Character by name: </label>
@@ -9,7 +12,7 @@ function CharacterSearchInput({ inputValue, handleChange }) {
         id="search"
         placeholder="Example: Bart Simpsons..."
         className={styles.inputSearch}
-        value={inputValue}
+        value={searchValue}
         onChange={(e) => handleChange(e.target.value)}
       />
     </div>
