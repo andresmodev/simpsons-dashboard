@@ -8,14 +8,14 @@ Mostrar una lista de personajes con soporte para estados de carga y error, persi
 
 ## 🐱‍💻 Objetivo de la versión
 
-Diseñar e implementar un filtro de entrada adaptable que permita a los usuarios buscar y refinar rápidamente las tarjetas de personajes. El objetivo es mejorar la usabilidad mediante el filtrado dinámico, garantizando que la lógica de búsqueda se integre a la perfección con el sistema de paginación existente y manteniendo una interfaz clara e intuitiva.
+Integrar la API de contexto de React para centralizar la gestión de estados y eliminar la perforación de propiedades. El objetivo es mejorar la escalabilidad y la facilidad de mantenimiento al permitir que los componentes consuman el estado global directamente, garantizando jerarquías de componentes más limpias y una arquitectura más profesional.
 
 ## 📓 Tareas pendientes
 
-- [x] Implementar lógica de filtrado en el custom hook para manejar consultas de búsqueda
-- [x] Garantizar la compatibilidad entre el filtrado y la paginación (los resultados filtrados se actualizan correctamente)
-- [x] Aplicar debounce al filtro para mejorar el rendimiento de busqueda, el debounce se hace de manera local porque la API de los simpson no recibe parámetros de búsqueda
-- [x] Documentar el flujo de trabajo del filtro y actualizar el README con ejemplos de uso
+- [x] Cree CharacterContext y CharacterProvider para encapsular la aplicación y exponer el estado global
+- [x] Integre el hook useCharacter existente dentro del proveedor para administrar la lógica y el estado de forma centralizada
+- [x] Implementar un custom hook useCharacterContext para simplificar el consumo de contexto en todos los componentes
+- [x] Refactorizar Main, CharacterList, CharacterPagination y CharacterInput para consumir el contexto directamente en lugar de recibir propiedades
 
 ## 🧩 Funcionalidades
 
@@ -25,7 +25,7 @@ Diseñar e implementar un filtro de entrada adaptable que permita a los usuarios
 - [x] Diseño responsivo, componentes de UI
 - [x] Paginación
 - [x] Filtrado
-- [] Rendimiento
+- [x] Mejor desempeño con useContext
 
 ## 🏗 Arquitectura
 
@@ -33,12 +33,13 @@ Diseñar e implementar un filtro de entrada adaptable que permita a los usuarios
 - **Hooks**: estado y efectos secundarios
 - **api**: comunicación con la API
 - **constants**: configuración y endpoints
-- 📝 **Filtro de busqueda con debounce**: Se introdujo un mecanismo de búsqueda sin rebotes mediante useRef y useEffect. El valor de entrada se actualiza inmediatamente, pero el filtrado solo se activa tras 500 ms de inactividad. Esto reduce las repeticiones de renderizado innecesarias y simula el comportamiento de búsqueda real.
-- 📝 **Estado derivado para resultados filtrados**: Se agregó un estado `filteredCharacters` derivado de la matriz de caracteres sin procesar. Esto garantiza que la interfaz de usuario muestre el conjunto de datos completo o el subconjunto filtrado según el valor de entrada sin rebote.
-- 📝 **Implementación de filtrado local**: Dado que la API de Los Simpson no admite parámetros de consulta para la búsqueda, el filtrado se realiza localmente en los caracteres de la página actual. Este diseño destaca la adaptabilidad a las limitaciones de la API, a la vez que ofrece una experiencia de usuario ágil.
-- 📝 **Mejoras en custom hook**: El useCharacter ahora gestiona tanto los datos sin procesar `characters` como los resultados filtrados y sin rebotes `filteredCharacters`. Esta separación de tareas mejora la claridad y permite reutilizar el gancho en futuras situaciones.
-- 📝 **Arquitectura limpia con refs**: Se aprovechó useRef para almacenar los ID de tiempo de espera para la lógica de rebote, evitando así rerenderizados innecesarios. Esto demuestra las mejores prácticas para gestionar valores mutables en diferentes renderizados.
-- 📝 **Mejoras futuras**: Las próximas versiones podrían explorar el filtrado global mediante la precarga de varias páginas, la integración de API con parámetros de búsqueda o la extensión de la lógica de rebote a las búsquedas remotas. Esto permitirá comparar estrategias de filtrado locales y remotas.
+- 📝 **Integración de la API Context**: Se implementaron CharacterContext y CharacterProvider para centralizar la gestión de estados. Esto eliminó la perforación de propiedades y permitió que los componentes consumieran el estado global directamente.
+
+- 📝 **Custom context hook**: Se agregó useCharacterContext para simplificar el consumo de contexto y garantizar la coherencia entre los componentes.
+
+- 📝 **Jerarquía de componentes más limpia**: Componentes como CharacterList, CharacterPagination y CharacterInput ahora consumen contexto directamente, lo que reduce el paso innecesario de propiedades desde App y Main.
+
+- 📝 **Arquitectura esclable**: Al separar la lógica en hooks y contexto, el proyecto ahora es más fácil de mantener y está listo para futuras extensiones (por ejemplo, temas globales, autenticación).
 
 ## 🚀 Tecnologías
 
@@ -49,7 +50,7 @@ Diseñar e implementar un filtro de entrada adaptable que permita a los usuarios
 
 ## 📦 Versión
 
-v0.6.0
+v0.7.0
 
 ## 📄 Licencia
 
